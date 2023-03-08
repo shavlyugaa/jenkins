@@ -3,7 +3,7 @@ pipeline {
   stages{
      stage('Build') {
 	   steps {
-	     bat 'mvn -f .\\lambda clean package'
+	     sh 'mvn -f .\\lambda clean package'
 	   }
 	   post {
 	     success {
