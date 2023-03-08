@@ -3,7 +3,7 @@ pipeline {
   stages{
      stage('Build') {
 	   steps {
-	     bat 'mvn -f .\\lambda -Djar.finalName=lambda clean package'
+	     bat 'mvn -f .\\lambda clean package'
 	   }
 	 }
   }
