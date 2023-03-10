@@ -12,15 +12,9 @@ package:
   artifact: target/java-basic-1.0-SNAPSHOT.jar
 
 functions:
-  getInt:
+  test:
     handler: example.Handler
     events:
       - http:
-          path: test/int
-          method: post
-  getWeather:
-    handler: HandlerWeatherData
-    events:
-      - http:
-          path: test/weather
-          method: post        
+          path: test
+          method: post   
