@@ -1,0 +1,26 @@
+service: audit-log-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: java8
+  region: eu-central-1
+  stage: test
+
+package:
+  artifact: target/java-basic-1.0-SNAPSHOT.jar
+
+functions:
+  getInt:
+    handler: example.HandlerInteger
+    events:
+      - http:
+          path: test/int
+          method: get
+  getWeather:
+    handler: HandlerWeatherData
+    events:
+      - http:
+          path: test/weather
+          method: get        
