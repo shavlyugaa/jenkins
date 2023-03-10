@@ -7,8 +7,7 @@ provider:
   runtime: java8
   region: eu-central-1
   stage: test
-  iam:
-    deploymentRole: arn:aws:iam::186219697773:role/codedeploy
+
 package:
   artifact: target/java-basic-1.0-SNAPSHOT.jar
 
