@@ -6,21 +6,21 @@ provider:
   name: aws
   runtime: java8
   region: eu-central-1
-  stage: test
+  stage: stage
 
 package:
   artifact: target/java-basic-1.0-SNAPSHOT.jar
 
 functions:
   getInt:
-    handler: example.HandlerInteger
+    handler: example.Handler
     events:
       - http:
           path: test/int
-          method: get
+          method: post
   getWeather:
     handler: HandlerWeatherData
     events:
       - http:
           path: test/weather
-          method: get        
+          method: post        
