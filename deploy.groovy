@@ -10,6 +10,7 @@ pipeline {
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
        }	   
 	   steps {
+	     copyArtifactPermission('maven-build')
 	     copyArtifacts(
            projectName: 'maven-build',
            fingerprintArtifacts: true)
