@@ -10,9 +10,6 @@ pipeline {
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
        }	   
 	   steps {
-	     copyArtifacts(
-           projectName: 'maven-build',
-           fingerprintArtifacts: true)
          sh 'serverless config credentials \
 		   --provider aws \
 		   --key $STAGE_AWS_ACCESS_KEY_ID \
