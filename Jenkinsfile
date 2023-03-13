@@ -1,5 +1,8 @@
 pipeline {  
   agent { label 'maven' } 
+  options {
+        copyArtifactPermission('deploy-groovy');
+  }
   stages{     
      stage('Build') {
 	   steps {
