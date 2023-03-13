@@ -1,4 +1,4 @@
-service: audit-log-service
+service: test-1
 
 frameworkVersion: '3'
 
@@ -12,9 +12,9 @@ package:
   artifact: target/java-basic-1.0-SNAPSHOT.jar
 
 functions:
-  test:
+  callFunction:
     handler: example.Handler
     events:
       - http:
-          path: test
+          path: test/call
           method: post   
