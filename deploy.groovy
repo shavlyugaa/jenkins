@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'serverless' }
+    agent { label 'maven' }
 	 options {
         copyArtifactPermission('maven-build');
     }
