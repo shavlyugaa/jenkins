@@ -8,7 +8,7 @@ pipeline {
         stage('Example stage 1') {
             steps {
                 withCredentials([string(credentialsId: 'access-key-id', variable: 'access_key_id')]) {
-				  bat 'echo $access_key_id'
+				  bat 'echo %access_key_id%'
 		       }
             }
         }
