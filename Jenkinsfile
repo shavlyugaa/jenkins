@@ -23,10 +23,10 @@ pipeline {
 		 sh 'serverless config credentials \
 			--provider aws \
 			--key $STAGE_AWS_ACCESS_KEY_ID \
-			--secret STAGE_AWS_SECRET_ACCESS_KEY
+			--secret $STAGE_AWS_SECRET_ACCESS_KEY'
 
 		cd ./lambda
-		serverless deploy --verbose
+		sh 'serverless deploy --verbose'
 	   }
 	 }
 	 
