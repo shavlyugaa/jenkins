@@ -12,10 +12,5 @@ pipeline {
                 echo credentials('access-key-id')
             }
         }
-        stage('Example stage 2') {
-            steps {
-                // 
-            }
-        }
     }
 }
