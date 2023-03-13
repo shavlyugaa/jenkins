@@ -19,12 +19,10 @@ pipeline {
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
        }	   
 	   steps {	     
-		 sh 'serverless config credentials \
-			--provider aws \
-			--key $STAGE_AWS_ACCESS_KEY_ID \
-			--secret $STAGE_AWS_SECRET_ACCESS_KEY'
-		cd ./lambda
-		sh 'serverless deploy --verbose'
+         sh 'serverless config credentials \
+		   --provider aws \
+		   --key $STAGE_AWS_ACCESS_KEY_ID \
+		   --secret $STAGE_AWS_SECRET_ACCESS_KEY'
 	   }
 	 }
   }
