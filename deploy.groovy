@@ -1,15 +1,16 @@
 pipeline {
     agent { label 'serverless' }	 
 	stages {
-    stage('Deploy to stage') {
+    stage('Deploy to stage') 
+	   options {
+			copyArtifactPermission('maven-build');
+		}{
 	   environment {
          STAGE_AWS_ACCESS_KEY_ID     = credentials('stage-aws-key-id')
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
        }	   
 	   steps {	
-	     options {
-			copyArtifactPermission('maven-build');
-		}
+	     
 	     copyArtifacts(
            projectName: 'maven-build',
            filter: '**/*.jar, **/serverless.yml',
