@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'serverless' }
+	 options {
+        copyArtifactPermission('maven-build');
+    }
 	stages {
     stage('Deploy to stage') {
 	   environment {
