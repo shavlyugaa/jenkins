@@ -8,7 +8,7 @@ pipeline {
 	   post {
 	     success {
 		   echo 'Archiving...'
-		   archiveArtifacts artifacts: '**/target/*.jar, **/serverless.yml'
+		   archiveArtifacts artifacts: '**/target/*.jar, **/serverless.yml' , fingerprint: true
 		 }
 	   }
 	 }
