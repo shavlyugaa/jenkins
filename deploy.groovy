@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Example stage 1') {
             steps {
-                echo credentials('access-key-id')
+                echo $AWS_ACCESS_KEY_ID
             }
         }
     }
