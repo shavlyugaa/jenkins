@@ -16,7 +16,7 @@ pipeline {
 		   --provider aws \
 		   --key $STAGE_AWS_ACCESS_KEY_ID \
 		   --secret $STAGE_AWS_SECRET_ACCESS_KEY'
-		 sh 'ls'
+		 sh 'ls -la'
 		 sh 'cd lambda'
 		 sh 'ls'
 		 sh 'serverless deploy --verbose'
