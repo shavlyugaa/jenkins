@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Example stage 1') {
             steps {
-                echo $AWS_ACCESS_KEY_ID
+                withCredentials([string(credentialsId: 'access-key-id', variable: 'access_key_id')]) {
+				  echo $access_key_id
+		       }
             }
         }
     }
