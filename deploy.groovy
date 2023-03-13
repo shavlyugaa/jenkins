@@ -1,16 +1,25 @@
 pipeline {
-    agent any
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('secret-access-key-id')
-    }
-    stages {
-        stage('Example stage 1') {
-            steps {
-                withCredentials([string(credentialsId: 'access-key-id', variable: 'access_key_id')]) {
-				  bat 'echo %access_key_id%'
-		       }
-            }
-        }
-    }
+    agent { label 'serverless' }
+    stage('Deploy to stage') {
+	   environment {
+         STAGE_AWS_ACCESS_KEY_ID     = credentials('stage-aws-key-id')
+         STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
+       }	   
+	   steps {	
+	     step([
+                    $class: 'CopyArtifact',
+                    filter: '**/*.jar, **/serverless.yml',
+                    fingerprintArtifacts: true,
+                    optional: true,
+                    projectName: 'build'
+                ])
+         sh 'serverless config credentials \
+		   --provider aws \
+		   --key $STAGE_AWS_ACCESS_KEY_ID \
+		   --secret $STAGE_AWS_SECRET_ACCESS_KEY'
+		 sh 'cd ./lambda'
+		 sh 'ls'
+		 sh 'serverless deploy --verbose'
+	   }
+	 }
 }
