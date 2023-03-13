@@ -1,5 +1,6 @@
 pipeline {
     agent { label 'serverless' }
+	stages {
     stage('Deploy to stage') {
 	   environment {
          STAGE_AWS_ACCESS_KEY_ID     = credentials('stage-aws-key-id')
@@ -22,4 +23,5 @@ pipeline {
 		 sh 'serverless deploy --verbose'
 	   }
 	 }
+  }
 }
