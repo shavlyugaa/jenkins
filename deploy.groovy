@@ -11,7 +11,7 @@ pipeline {
        }	   
 	   steps {
 	     copyArtifacts(
-           projectName: 'maven-build',.
+           projectName: 'maven-build',
            fingerprintArtifacts: true)
          sh 'serverless config credentials \
 		   --provider aws \
