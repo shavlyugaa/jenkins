@@ -7,13 +7,10 @@ pipeline {
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
        }	   
 	   steps {	
-	     step([
-                    $class: 'CopyArtifact',
-                    filter: '**/*.jar, **/serverless.yml',
-                    fingerprintArtifacts: true,
-                    optional: true,
-                    projectName: './build'
-                ])
+	     copyArtifacts(
+           filter: '**/*.jar, **/serverless.yml',
+           projectName: ../build,
+           fingerprintArtifacts: true)
          sh 'serverless config credentials \
 		   --provider aws \
 		   --key $STAGE_AWS_ACCESS_KEY_ID \
