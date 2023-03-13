@@ -9,7 +9,7 @@ pipeline {
 	   steps {	
 	     copyArtifacts(
            filter: '**/*.jar, **/serverless.yml',
-           projectName: 'build',
+           projectName: '/Microservices/Stage/build',
            fingerprintArtifacts: true)
          sh 'serverless config credentials \
 		   --provider aws \
