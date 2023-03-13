@@ -10,7 +10,8 @@ pipeline {
 	     copyArtifacts(
            projectName: 'maven-build',
            filter: '**/*.jar, **/serverless.yml',
-           fingerprintArtifacts: true)
+           fingerprintArtifacts: true,
+		   flatten: true)
          sh 'serverless config credentials \
 		   --provider aws \
 		   --key $STAGE_AWS_ACCESS_KEY_ID \
