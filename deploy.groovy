@@ -11,13 +11,14 @@ pipeline {
            projectName: 'maven-build',
            filter: '**/*.jar, **/serverless.yml',
            fingerprintArtifacts: true)
-         serverless config credentials \
+         sh 'serverless config credentials \
 		   --provider aws \
 		   --key $STAGE_AWS_ACCESS_KEY_ID \
-		   --secret $STAGE_AWS_SECRET_ACCESS_KEY
-		 cd ./lambda
+		   --secret $STAGE_AWS_SECRET_ACCESS_KEY'
 		 sh 'ls'
-		 serverless deploy --verbose
+		 sh 'cd ./lambda'
+		 sh 'ls'
+		 sh 'serverless deploy --verbose'
 	   }
 	 }
   }
