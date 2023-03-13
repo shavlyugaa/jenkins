@@ -12,7 +12,7 @@ pipeline {
                     filter: '**/*.jar, **/serverless.yml',
                     fingerprintArtifacts: true,
                     optional: true,
-                    projectName: 'Microservices/Stage/build'
+                    projectName: '/Microservice/Stage/build'
                 ])
          sh 'serverless config credentials \
 		   --provider aws \
