@@ -13,7 +13,7 @@ pipeline {
 	   }
 	 }
 	 stage('Deploy to stage') {	 
-	   agent { label 'serverless' } 	 
+	   agent { label 'serverless' }
 	   environment {
          STAGE_AWS_ACCESS_KEY_ID     = credentials('stage-aws-key-id')
          STAGE_AWS_SECRET_ACCESS_KEY = credentials('stage-aws-secret-access-key')
@@ -28,15 +28,6 @@ pipeline {
 		cd ./lambda
 		sh 'serverless deploy --verbose'
 	   }
-	 }
-	 
-	 stage('Deploy to prod') {	 
-	   agent { label 'serverless' } 
-	   steps {
-	   	 timeout(time: 1, unit: 'DAYS')
-		   input message: 'Approve prod deployment'
-	     copyArtifacts(projectName: 'build', filter: '**/*.jar, **/serverless.yml');
-	   }	   
 	 }
   }
 }
